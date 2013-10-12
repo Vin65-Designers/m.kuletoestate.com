@@ -1,0 +1,90 @@
+/* ====================================================================================================				
+	Mobile Browser Specific CSS
+==================================================================================================== */
+body,p,ul,ol,dl,blockquote { 
+	color: #666; 
+	font-family: Helvetica, Arial, sans-serif; 
+	font-size: 14px; 
+	}
+
+input,textarea,button { 
+	font-family: Helvetica, Arial, sans-serif; 
+	font-size: 14px; 
+	}
+
+h1,h2,h3,h4,h5,h6 { 
+	color: #333; 
+	font-weight: normal; 
+	}
+
+h1 { 
+	font-size: 30px; 
+	line-height: 40px; 
+	margin: 0 0 10px 0;
+	}
+
+h2 { 
+	font-size: 24px; 
+	margin: 0 0 10px 0; 
+	}
+
+h3 {
+	font-size: 18px; 
+	margin: 0 0 10px 0; 
+	}
+ 
+/* Links */
+
+a:link, a:visited { 
+	color: #333; 
+	text-decoration: none; 
+	}
+	
+a:hover { 
+	color: #000; 
+	}
+
+
+/* Horizontal Rule */
+
+hr { 
+	background: #ccc; 
+	border: none; 
+	clear: both;
+	color: #ccc; 
+	float: none; 
+	height: .1em; 
+	margin: 20px 0 20px 0; 
+	width: 100%; 
+	}
+ 
+/* Rounded Corners */
+
+.rounded-1px { 
+	border-radius:1px; 
+	}
+	
+.rounded-2px { 
+	border-radius:2px; 
+	}
+	
+.rounded-3px { 
+	border-radius:3px; 
+	}
+	
+.rounded-4px { 
+	border-radius:4px; 
+	}
+	
+.rounded-5px { 
+	border-radius:5px; 
+	}
+	
+ 
+/* Content
+---------------------------------------------------------------------------------------------------- */
+ 
+.contact-info { width: 130px; float: right; margin: 0 0 15px 15px; padding: 5px; border: 1px solid #b4b4b4; background: #eee; }
+.contact-info .hours { text-align: center; font-family: Georgia, serif; font-size: 12px; line-height: 18px; margin: 0; }
+	
+.call-button { width: 100%; }
