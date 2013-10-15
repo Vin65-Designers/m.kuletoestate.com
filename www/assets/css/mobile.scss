@@ -1,0 +1,831 @@
+@charset "UTF-8";
+/* ====================================================================================================				
+	Mobile Browser Specific CSS
+==================================================================================================== */
+
+/* ====================================================================================================
+                
+	Table of Content
+	Theme Settings
+	1. Typography - Copy to adminmobile.css
+	2. Header
+	3. Navigation
+		3a. Main Navigation
+		3b. Sub Navigation
+	4. Content
+	5. Footer
+	6. Buttons
+	7. Clear Fix
+	8. Vin65 Overrides
+	
+*/
+
+//   ===================================================================================================
+//		Theme Settings
+//   ===================================================================================================
+
+
+@import "_iconFont.scss";
+
+// Fonts
+$garamond: "adobe-garamond-pro-n4","adobe-garamond-pro", garamond, sans-serif;
+$garamond-bold: "adobe-garamond-pro-n7","adobe-garamond-pro",sans-serif;
+$georgia: georgia, sans-serif;
+$voluta: "voluta-script-pro-n4","voluta-script-pro",sans-serif;
+
+// Colors
+$black: #000;
+$purple: #621c32;
+$red: #4f1922;
+$red-dark: #790000;
+$tan: #f8eedb;
+$gold-extra-light: #f4e6b2;
+$gold-light: #c8ad7a;
+$gold: #d0c48f;
+$gold-dark: #b68859;
+$grey-light: #ccc;
+$grey: #d7d7d7;
+$grey-dark: #999;
+$white: #fff;
+$brown: #3c3532;
+$brown-light: #534945;
+
+$backgroundColor: $black;
+
+$buttonFontColor: $red-dark;
+$altButtonFontColor: $black;
+
+$websiteWidth: 1150px;
+$innerWrapWidth: 975px;
+
+$fontColor: $black;
+$fontFamily: $garamond;
+
+$headingFontFamily: $garamond;
+$headingFontColor: $red-dark;
+
+$headerFontColor: $white;
+$headerFontColorHover: $grey;
+
+$footerFontColor: $white;
+$footerFontColorHover: $gold-dark;
+
+@mixin borderBox{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin gradient($color1, $color2){
+	background: $color1;
+	background-image: -webkit-linear-gradient(top, $color1, $color2);
+	background-image: -moz-linear-gradient(top, $color1, $color2);
+	background-image: -ms-linear-gradient(top, $color1, $color2);
+	background-image: -o-linear-gradient(top, $color1, $color2);
+	background-image: linear-gradient(top, $color1, $color2);
+}
+
+/*   ===================================================================================================
+     1. Typography - These get copied into the admin.css
+======================================================================================================== */
+
+body{
+	background: $backgroundColor;
+	color: $fontColor;
+	font-size: 14px;
+	font-family: $fontFamily;
+	line-height: 20px;
+	margin: 0;
+}
+
+a{
+	color: $red-dark;
+	text-decoration: none;
+
+	&:hover, &:focus, &:active{
+		text-decoration: underline;
+	}
+}
+
+h1,h2,h3,h4,h5,h6,p,table,ul,ol {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+ul, ol, dl, p, table, pre {
+	margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color: $headingFontColor;
+	font-family: $headingFontFamily;
+	font-weight: normal;
+	margin: 0;
+}
+
+	h1 {
+		color: $red;
+		font:{
+			family: $voluta;
+			size: 62px;
+		}
+		line-height: 1;
+		margin-bottom: 0.2em;
+	}
+
+	h2 {
+		font:{
+			family: $garamond-bold;
+			size: 20px;
+			variant: small-caps;
+			weight: 700;
+		}
+		line-height: 1.2;
+		margin: 0.25em 0 0.5em;
+	}
+
+	h3 {
+		font:{
+			family: $garamond-bold;
+			size: 18px;
+			variant: small-caps;
+			weight: 700;
+		}
+		line-height: 1.2;
+		margin-bottom: 0.6em;
+	}
+
+	h4 {
+		font-size: 17px;
+		line-height: 1.2;
+	}
+
+	h5 {
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	h6 {
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+legend {
+	color: #111;
+}
+
+form {
+	margin-bottom: 1em;
+}
+
+hr {
+	background-color: #666;
+	border: 0;
+	color: #666;
+	height: 1px;
+}
+
+img{
+	border:none;
+	max-width:100% !important; 
+	height:auto !important; 
+} /* Fixes images causing scrolling on mobile, overrides client inline styles */
+
+input{
+	&[type=text], &[type=search], &[type=password], &[type=url], &[type=email], &[type=number]{
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		
+		@include borderBox;
+		
+		height: 44px;
+		min-width: 44px;
+		padding: 0 0.5em;
+	}
+}
+
+input {
+	&[name=Quantity] {
+		text-align: center;
+	}
+}
+
+.v65m-cartItemDescription .v65m-qtyField {
+	float: left;
+	margin: 0 4px 4px 0;
+	font-size: 14px;
+}
+
+select{
+	height: 44px;
+	min-width: 44px;
+}
+
+/*   ===================================================================================================
+     2. Header
+======================================================================================================== */
+
+header{
+	position: relative;
+	text-align: center;
+	width: 100%;
+
+	.logo{
+		display: block;
+		padding: 1em 0;
+		width:100%;
+	}
+}
+
+.userTools{
+	background:#000;
+	border-bottom:1px solid #6a6a6a;
+	width:100%;
+
+	a{
+		color: #fff;
+	}
+}
+
+.v65m-loginLink, .v65m-cart, .contactButton{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	display: block;
+	float: left;
+	height:44px;
+	line-height:44px;
+	width:33.33333333%;
+
+	[class^="icon-"]:before, [class*=" icon-"]:before{
+		margin-right: 0.5em;
+	}
+}
+
+.v65m-loginLink, .v65m-cart{
+	border-right:1px solid #595959;
+}
+	
+.v65m-cart, .contactButton{
+	border-left:1px solid #6a6a6a;
+}
+	
+.contactButton{
+	background:#000;
+}
+
+/*   ===================================================================================================
+     3. Navigation
+======================================================================================================== */
+
+/* ----- a. Main Navigation ----- */
+nav{
+	background: $red;
+	font:{
+		family: $garamond;
+		size: 16px;
+		variant: small-caps;
+	}
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li{
+		display: inline-block;
+	}
+	
+	a{
+		color: $gold;
+		padding:0 11px;
+
+		&:hover{
+			color: $grey;
+			text-decoration: none;
+		}
+
+		&.v65m-selected{
+			color: $grey;
+		}
+	}
+}
+
+/* ----- b. Sub Navigation ----- */
+
+footer{
+	.subNav{
+		background: #333;
+
+		a{
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
+
+/*   ===================================================================================================
+     4. Content
+======================================================================================================== */
+
+#slider, #pagePhotoGallery{
+	line-height: 0;
+	overflow: hidden;
+	position: relative;
+	visibility: hidden;
+
+	.v65-galleryWrap{
+		overflow: hidden;
+		position: relative;
+
+		img {
+			float:left;
+			width:100%;
+			position: relative;
+		}
+	}
+
+
+	a{
+		display: block;
+	}
+}
+
+.v65-swipeNav{
+	margin: 1em 0;
+	text-align: center;
+
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li{
+		background: image-url("bullets.png") no-repeat; // Same bullets as used for nivo slider
+		color: transparent;
+		display: inline-block;
+		height: 22px;
+		margin: 0 2px;
+		width: 22px;
+
+		&.active{
+			background-position: 0 -22px;
+		}
+	}
+}
+
+#slider{
+	margin: 0.5em 0;
+
+	& + .v65-swipeNav{
+		margin: 1em 0 0;
+	}
+}
+
+.content{
+	background: $tan;
+	border: 3px solid $gold-dark;
+	margin-bottom: 1em;
+	padding: 1em;
+}
+
+.v65-productGroup-title{
+	@extend h2;
+}
+	
+/*   ===================================================================================================
+     5. Footer
+======================================================================================================== */
+
+footer{
+	border-top: 1px solid $footerFontColor;
+	color: $footerFontColor;
+	text-align: center;
+	padding-bottom: 1em;
+
+	a{
+		color: $footerFontColor;
+		position: relative;
+	
+		&:hover{
+			color: $footerFontColorHover;
+			text-decoration: none;
+		}
+	}
+
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li{
+		border-bottom: 1px solid $footerFontColor;
+		height: 44px;
+		line-height: 44px;
+
+		a{
+			display: block;
+		}
+	}
+
+	.legal, .author{
+		font-size: 0.8em;
+	}
+
+	.legal{
+		margin-top: 1em;
+	}
+
+	.author{
+		a{}
+	}
+
+	.standardSite{
+		img{
+			display: none;
+		}
+
+		a:before{ 
+			content: '\f108';
+			font-family: 'fontello';
+			font-style: normal;
+			font-weight: normal;
+			speak: none;
+			display: inline-block;
+			text-decoration: inherit;
+			width: 1em;
+			margin-right: 0.5em;
+			text-align: center;
+			/* opacity .8 */
+			/* For safety - reset parent styles, that can break glyph codes*/
+			font-variant: normal;
+			text-transform: none;
+		}
+	}
+
+}
+	
+/*   ===================================================================================================
+     6. Buttons
+======================================================================================================== */
+
+button {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	&.defaultBtn,  &.modalBtn,  &.largeBtn{
+		@include gradient($gold-extra-light, $gold-dark);
+		border: 1px solid $red-dark;
+		font-weight: 700;
+		margin-right: 0;
+		padding: 0;
+		text:{
+			decoration: none;
+			transform: uppercase;
+		}
+		vertical-align: middle;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		
+		span{
+			font-family: $garamond;
+			background: none;
+			color: $buttonFontColor;
+			height: 44px;
+			line-height: 44px;
+			padding: 0 0.5em;
+
+		}
+
+		&:hover, &:active{
+			@include gradient($gold-extra-light, $gold-light);
+		}
+	}
+
+	&.altBtn, &.altModalBtn, &.altLargeBtn{
+		@include gradient($grey, $grey-dark);
+		border: 1px solid $black;
+		font-weight: 700;
+		padding: 0;
+		text:{
+			decoration: none;
+			transform: uppercase;
+		}
+		vertical-align: middle;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		
+		span{
+			font-family: $garamond;
+			background: none;
+			color: $altButtonFontColor;
+			height: 44px;
+			line-height: 44px;
+			padding: 0 0.5em;
+		}
+
+		&:hover, &:active{
+			@include gradient($grey-light, $grey);
+		}
+	}
+}
+
+a{	
+	&.linkBtn, &.modalLinkBtn, &.largeLinkBtn, &.fullWidthBtn{
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		@include gradient($gold-extra-light, $gold-dark);
+		border: 1px solid $red-dark;
+		font-weight: 700;
+		padding: 0;
+		text:{
+			decoration: none;
+			transform: uppercase;
+		}
+		vertical-align: middle;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		
+		span{
+			font-family: $garamond;
+			background: none;
+			color: $buttonFontColor;
+			height: 44px;
+			line-height: 44px;
+			padding: 0 0.5em;
+		}
+
+		&:hover, &:active{
+			@include gradient($gold-extra-light, $gold-light);
+		}
+	}
+
+	&.linkAltBtn, &.modalLinkAltBtn, &.modalLinkAltBtn{
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		@include gradient($grey, $grey-dark);
+		border: 1px solid $black;
+		font-weight: 700;
+		padding: 0;
+		text:{
+			decoration: none;
+			transform: uppercase;
+		}
+		vertical-align: middle;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		
+		span{
+			font-family: $garamond;
+			background: none;
+			color: $altButtonFontColor;
+			height: 44px;
+			line-height: 44px;
+			padding: 0 0.5em;
+		}
+
+		&:hover, &:active{
+			@include gradient($grey-light, $grey);
+		}
+	}
+
+	&.linkBtn, &.linkAltBtn{
+		height: auto;
+		line-height: inherit;
+	}
+
+	&.largeLinkBtn{
+		height: 44px;
+		line-height: 44px;
+	}
+
+	&.modalLinkBtn, &.modalLinkAltBtn, &.modalLinkAltBtn{
+		height: auto;
+		line-height: inherit;
+		min-width: inherit;
+	}
+}
+
+/*   ===================================================================================================
+     7. Products
+======================================================================================================== */
+
+/* ----- a. List ----- */
+
+.v65m-productStandard{
+	padding: 0.5em 0 0.5em 90px;
+	margin-bottom: 0.5em;
+
+	.v65-product-description{
+		border-bottom: 0;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+}
+
+.v65-product-addToCart-priceWrapper{
+	padding: 5px 0;
+
+}
+
+.v65-addToCart-price, .v65-product-addToCart-originalPrice{
+	padding: 0;
+}
+
+.v65-product-addToCart-salePrice{
+	padding: 0 0 0 5px;
+}
+
+.v65-product-addToCart-quantity{
+	padding-left: 0;
+}
+
+.v65-product-title, .v65m-clubTitle{
+	margin-bottom: 0.3em;
+	@extend h3;
+}
+
+.v65-product-subtitle{
+	margin-bottom: 0.3em;
+	@extend h5;
+}
+
+/* ----- b. Drilldown ----- */
+
+#v65m-productMobileDrilldown{
+	padding: 0.5em 0 0.5em 110px;
+
+	.v65-product-addToCart-priceWrapper, .v65-product-addToCart-unitDescription{
+		padding: 0;
+	}
+
+	.v65-product-addToCart-price{
+		padding: 0 5px 0 0;
+	}
+
+	h3{
+		margin-bottom: 0;
+	}
+
+	.v65m-productMobileReviews{
+		margin-bottom: 0.3em;
+	}
+}
+
+.v65m-productMobileReviews{
+	font-size: 0.75em;
+}
+
+.v65-product-socialBar, .v65-product-description, .v65-wine-specs{
+	margin-bottom: 1em;
+}
+
+.v65m-productMobileDescription h1 {
+	@extend h2;
+	margin-bottom: 0.3em;
+}
+
+.v65-wine-specs-title, .v65-wine-profile-title, .v65-product-reviews-title{
+	@extend h3;
+}
+
+.v65-product-review-reviewerName{
+	font-size: 1.1em;
+}
+
+.v65-product-review-comment-wrapper{
+	float: none;
+	width: auto;
+}
+
+/*   ===================================================================================================
+     8. Cart/Checkout
+======================================================================================================== */
+
+/* ----- a. Cart ----- */
+
+.v65m-cartCheckOutButtons{
+	a{
+		display: block;
+
+		&.largeLinkBtn{
+			margin: 15px 0 0;
+		}
+	}
+}
+
+/* ----- b. Checkout ----- */
+
+#v65-billBirthMonth, #v65-billBirthDay, #v65-billBirthYear,
+#v65-shipBirthMonth, #v65-shipBirthDay, #v65-shipBirthYear{
+	margin-right: 1%;
+	width: 31%;
+}
+
+select[name="BirthMonth"], select[name="BirthDay"], select[name="BirthYear"],
+select[name="ShipBirthMonth"], select[name="ShipBirthDay"], select[name="ShipBirthYear"]{
+	margin-right: 1%;
+	width: 31% !important;	
+}
+
+#v65-billBirthYear, #v65-shipBirthYear, select[name="BirthYear"], select[name="ShipBirthYear"]{
+	margin-right: 0;
+}
+
+.v65m-checkoutForm{
+	fieldset{
+		div{
+			padding: 5px 0 0;
+		}
+	}
+
+	button[type=submit]{
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+#v65m-CouponCode{
+	height: 44px !important;
+	width: 70% !important;
+}
+
+#v65m-CouponCode + a.linkBtn{
+	float: right;
+	width: 20%;
+}
+
+#v65m-checkoutCartSummaryMini{
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+
+	table{
+		width: 100%;
+	}
+}
+
+#v65-cardExpiryMo, #v65-cardExpiryYr{
+	width: 48%;
+}
+
+#v65-cardExpiryYr{
+	float: right;
+}
+
+#v65m-cartHeader{
+	.linkAltBtn{
+		display: none;
+	}
+
+	a.largeLinkBtn{
+		margin-top: 0;
+	}
+}
+
+/*   ===================================================================================================
+     9. Vin65 Overrides
+======================================================================================================== */
+
+#v65m-toolBar{
+	background: none;
+	border: 0;
+	margin: 0.5em 0;
+
+	form{
+		width: 100%;
+	}
+
+	input{
+		-webkit-appearance: none;
+		width: 70% !important;
+	}
+	
+	button.defaultBtn{
+		float: right;
+		width: 25%;
+	}
+}
+
+/* ----- Login Form ----- */
+
+#v65m-LoginFormWrapper{
+	fieldset{
+		div{
+			padding: 5px 0 0;
+		}
+	}
+
+	form{
+		width: 100%;
+	}
+
+	input{
+		&[type=text], &[type=password]{
+			width: 100% !important;
+		}
+	}
+
+	button{
+		width: 100%;
+	}
+}
